@@ -9,7 +9,7 @@
     <body>
         <?php
         // connect
-        $db = new PDO('mysql:host=127.0.0.1;dbname=phptunes', 'root', '');
+        require 'db.php';
 
         // query the genres table using a SELECT command
         $sql = "SELECT * FROM genres";

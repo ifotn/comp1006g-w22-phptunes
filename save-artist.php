@@ -12,8 +12,7 @@
 
         // connect to the db using the PDO library w/5 vals: db type / server / dbname / username / password
         // PDO is the current PHP standard data access library, replacing mysqli
-        $db = new PDO('mysql:host=127.0.0.1;dbname=phptunes', 'root', '');
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        require 'db.php';
 
         // set the SQL INSERT command to add a new record to our artists table & set up a parameter for the name
         $sql = "INSERT INTO artists (name, genreId) VALUES (:name, :genreId)";

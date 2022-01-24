@@ -18,7 +18,7 @@
             <tbody>
                 <?php
                 // connect
-                $db = new PDO('mysql:host=127.0.0.1;dbname=phptunes', 'root', '');
+                require 'db.php';
 
                 // set up & run query
                 $sql = "SELECT * FROM artists";

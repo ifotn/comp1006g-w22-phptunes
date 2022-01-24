@@ -18,7 +18,8 @@
                     <label for="genreId" class="control-label col-2">Genre:</label>
                     <select name="genreId" id="genreId">
                         <?php
-                        $db = new PDO('mysql:host=127.0.0.1;dbname=phptunes', 'root', '');
+                        require 'db.php';
+                        
                         $sql = "SELECT * FROM genres";
 
                         $cmd = $db->prepare($sql);
