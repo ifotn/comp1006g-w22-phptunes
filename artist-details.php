@@ -12,7 +12,7 @@
             <form method="POST" action="save-artist.php">
                 <fieldset class="form-group">
                     <label for="name" class="control-label col-2">Name:</label>
-                    <input name="name" id="name" />
+                    <input name="name" id="name" required maxlength="100" />
                 </fieldset>
                 <fieldset class="form-group">
                     <label for="genreId" class="control-label col-2">Genre:</label>

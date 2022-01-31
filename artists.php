@@ -8,6 +8,7 @@
     </head>
     <body>
         <h1>Artists</h1>
+        <a href="artist-details.php">Add a New Artist</a>
         <table class="table table-striped">
             <thead>
                 <tr>
