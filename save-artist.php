@@ -57,7 +57,7 @@
             $db = null;
 
             // show the user a message
-            echo "Artist Saved<br />";
+            echo '<p class="col-12 text-center">Artist Saved</p>';
             echo '<a href="artists.php">Click to View List of Artists</a>';
         }     
         ?>

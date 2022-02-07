@@ -5,6 +5,8 @@
         <title>Artists</title>
         <!--Bootstrap-->
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+        <!-- Custom CSS-->
+        <link type="text/css" rel="stylesheet" href="css/styles.css" />
     </head>
     <body>
         <h1>Artists</h1>
@@ -22,7 +24,7 @@
                 require 'db.php';
 
                 // set up & run query
-                $sql = "SELECT * FROM artists";
+                $sql = "SELECT artists.*, genres.name as 'genreName' FROM artists INNER JOIN genres ON artists.genreId = genres.genreId";
                 $cmd = $db->prepare($sql);
                 $cmd->execute();
                 $artists = $cmd->fetchAll();
@@ -31,7 +33,7 @@
                 foreach ($artists as $artist) {
                     echo '<tr>
                         <td>' . $artist['name'] . '</td>
-                        <td>'. $artist['genreId'] . '</td>
+                        <td>'. $artist['genreName'] . '</td>
                         </tr>';
                 }
 

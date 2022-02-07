@@ -5,16 +5,19 @@
         <title>Artist Details</title>
         <!--Bootstrap-->
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+        <!-- Custom CSS-->
+        <link type="text/css" rel="stylesheet" href="css/styles.css" />
     </head>
     <body>
         <main class="container">
             <h1>Artist Details</h1>
+            <p class="alert alert-secondary">All fields are required.</p>
             <form method="POST" action="save-artist.php">
-                <fieldset class="form-group">
+                <fieldset class="form-group m-1">
                     <label for="name" class="control-label col-2">Name:</label>
                     <input name="name" id="name" required maxlength="100" />
                 </fieldset>
-                <fieldset class="form-group">
+                <fieldset class="form-group m-1">
                     <label for="genreId" class="control-label col-2">Genre:</label>
                     <select name="genreId" id="genreId">
                         <?php

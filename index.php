@@ -7,7 +7,7 @@
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
     </head>
     <body>
-        <main class="container">
+        <main class="container text-center">
             <h1>Welcome to PHP Tunes!</h1>
             <p>
                 This site is built for COMP1006G @ Lakehead-Georgian in Winter 2022.

@@ -1,0 +1,19 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300&family=Rubik&display=swap');
+
+body {
+    font-family: 'Oxygen', sans-serif;
+}
+
+.btn-primary {
+    background-color: #00796B;
+}
+
+.btn-primary:hover {
+    background-color: #009688;
+}
+
+.alert-secondary {
+    background-color: #757575;
+    color: #fff;
+}
