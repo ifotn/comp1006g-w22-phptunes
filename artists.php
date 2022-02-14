@@ -7,6 +7,8 @@
         <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
         <!-- Custom CSS-->
         <link type="text/css" rel="stylesheet" href="css/styles.css" />
+        <!--Custom JS-->
+        <script src="js/scripts.js" type="text/javascript" defer></script>
     </head>
     <body>
         <h1>Artists</h1>
@@ -16,6 +18,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Genre</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +37,12 @@
                     echo '<tr>
                         <td>' . $artist['name'] . '</td>
                         <td>'. $artist['genreName'] . '</td>
+                        <td>
+                            <a href="delete-artist.php?artistId='. $artist['artistId'] . '" class="btn btn-danger"
+                                onclick="return confirmDelete()">
+                                Delete
+                            </a>
+                        </td>
                         </tr>';
                 }
 
