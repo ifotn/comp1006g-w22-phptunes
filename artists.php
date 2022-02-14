@@ -35,7 +35,9 @@
                 // loop through results and display inside table cells
                 foreach ($artists as $artist) {
                     echo '<tr>
-                        <td>' . $artist['name'] . '</td>
+                        <td>
+                            <a href="artist-details.php?artistId=' . $artist['artistId'] . '">' . $artist['name'] . '</a>
+                        </td>
                         <td>'. $artist['genreName'] . '</td>
                         <td>
                             <a href="delete-artist.php?artistId='. $artist['artistId'] . '" class="btn btn-danger"
