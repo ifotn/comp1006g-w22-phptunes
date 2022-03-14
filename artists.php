@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Artists</title>
-        <!--Bootstrap-->
-        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-        <!-- Custom CSS-->
-        <link type="text/css" rel="stylesheet" href="css/styles.css" />
-        <!--Custom JS-->
-        <script src="js/scripts.js" type="text/javascript" defer></script>
-    </head>
-    <body>
+<?php
+$title = 'Artists';
+require 'includes/header.php';
+?>
         <h1>Artists</h1>
         <a href="artist-details.php">Add a New Artist</a>
         <table class="table table-striped">
@@ -24,7 +15,7 @@
             <tbody>
                 <?php
                 // connect
-                require 'db.php';
+                require 'includes/db.php';
 
                 // set up & run query
                 $sql = "SELECT artists.*, genres.name as 'genreName' FROM artists INNER JOIN genres ON artists.genreId = genres.genreId";

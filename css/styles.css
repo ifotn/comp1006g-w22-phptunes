@@ -5,7 +5,7 @@ body {
     font-family: 'Oxygen', sans-serif;
 }
 
-.btn-primary {
+.btn-primary, .navbar-dark {
     background-color: #00796B;
 }
 
@@ -16,4 +16,8 @@ body {
 .alert-secondary {
     background-color: #757575;
     color: #fff;
+}
+
+a {
+    color: #757575;
 }

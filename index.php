@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>PHP Tunes</title>
-        <!--Bootstrap-->
-        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-    </head>
-    <body>
+<?php
+$title = 'Welcome';
+require 'includes/header.php';
+?>
         <main class="container text-center">
             <h1>Welcome to PHP Tunes!</h1>
             <p>
