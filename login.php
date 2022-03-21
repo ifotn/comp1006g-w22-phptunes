@@ -5,6 +5,14 @@ require 'includes/header.php';
 
 <main class="container">
     <h1>Login</h1>
+    <?php
+    if (empty($_GET['invalid'])) {
+        echo '<h6 class="alert alert-secondary">Please enter your credentials</h6>';
+    }
+    else {
+        echo '<h6 class="alert alert-info">Invalid Login</h6>';
+    }
+    ?>
     <form method="post" action="validate.php">
         <fieldset class="m-1">
             <label for="username" class="col-2">Username:</label>
