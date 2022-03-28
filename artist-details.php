@@ -14,14 +14,25 @@ try {
             $artistId = $_GET['artistId'];
 
             require 'includes/db.php';
-            $sql = "SELECT * FROM artists WHERE artistId = :artistId";
+
+            // add userId filter so users can only see their own artists
+            $userId = $_SESSION['userId'];
+            $sql = "SELECT * FROM artists WHERE artistId = :artistId AND userId = :userId";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(':artistId', $artistId, PDO::PARAM_INT);
+            $cmd->bindParam(':userId', $userId, PDO::PARAM_INT);
             $cmd->execute();
             $artist = $cmd->fetch();  // use fetch() not fetchAll() for single-row queries
-            $name = $artist['name'];
-            $genreId = $artist['genreId'];
-            $db = null;
+            if (empty($artist)) {
+                $db = null;
+                header('location:error.php');
+                exit();
+            }
+            else {
+                $name = $artist['name'];
+                $genreId = $artist['genreId'];
+                $db = null;                
+            }
         }
     }
 }

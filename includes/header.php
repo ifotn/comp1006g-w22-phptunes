@@ -22,16 +22,23 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="artists.php">Artists</a>
-                    </li>                
-                </ul>
-                <ul class="navbar-nav ms-auto">
+                        <a class="nav-link" href="artists.php">All Artists</a>
+                    </li>
                     <?php
                     // only call session start if not called previously in this http request
                     if (session_status() == PHP_SESSION_NONE) {
                         session_start();
                     }
-                    
+
+                    if (!empty($_SESSION['username'])) {
+                        echo '<li class="nav-item">
+                                <a class="nav-link" href="my-artists.php">My Artists</a>
+                            </li>';
+                    }
+                    ?>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <?php                    
                     if (empty($_SESSION['username'])) {
                         echo '<li class="nav-item">
                                 <a class="nav-link" href="register.php">Register</a>

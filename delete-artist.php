@@ -11,9 +11,11 @@ try {
             require 'includes/db.php';
 
             // set up and and run SQL DELETE
-            $sql = "DELETE FROM artists WHERE artistId = :artistId";
+            $userId = $_SESSION['userId'];
+            $sql = "DELETE FROM artists WHERE artistId = :artistId AND userId = :userId";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(':artistId', $_GET['artistId'], PDO::PARAM_INT);
+            $cmd->bindParam(':userId', $userId, PDO::PARAM_INT);
             $cmd->execute();
 
             // disconnect

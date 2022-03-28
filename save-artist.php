@@ -37,11 +37,14 @@ try {
         // PDO is the current PHP standard data access library, replacing mysqli
         require 'includes/db.php';
 
+        // set userId var from session var
+        $userId = $_SESSION['userId'];
+
         if (empty($artistId)) {
             // set the SQL INSERT command to add a new record to our artists table & set up a parameter for the name
-            $sql = "INSERT INTO artists (name, genreId) VALUES (:name, :genreId)";
+            $sql = "INSERT INTO artists (name, genreId, userId) VALUES (:name, :genreId, :userId)";
         } else {
-            $sql = "UPDATE artists SET name = :name, genreId = :genreId WHERE artistId = :artistId";
+            $sql = "UPDATE artists SET name = :name, genreId = :genreId, userId = :userId WHERE artistId = :artistId";
         }
 
         // populate our SQL command with our form inputs
@@ -50,6 +53,7 @@ try {
         $cmd = $db->prepare($sql);
         $cmd->bindParam(':name', $name, PDO::PARAM_STR, 100);
         $cmd->bindParam(':genreId', $genreId, PDO::PARAM_INT);
+        $cmd->bindParam(':userId', $userId, PDO::PARAM_INT);
 
         // bind artistId param ONLY when we have 1 
         if (!empty($artistId)) {
