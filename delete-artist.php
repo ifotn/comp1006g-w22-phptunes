@@ -1,4 +1,5 @@
 <?php
+require 'includes/auth.php';
 $title = 'Deleting Artist...';
 require 'includes/header.php';
 

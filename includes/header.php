@@ -23,13 +23,32 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="artists.php">Artists</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="register.php">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.php">Login</a>
-                    </li>
+                    </li>                
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <?php
+                    // only call session start if not called previously in this http request
+                    if (session_status() == PHP_SESSION_NONE) {
+                        session_start();
+                    }
+                    
+                    if (empty($_SESSION['username'])) {
+                        echo '<li class="nav-item">
+                                <a class="nav-link" href="register.php">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="login.php">Login</a>
+                            </li>';
+                    }
+                    else {
+                        echo '<li class="nav-item">
+                                <a class="nav-link" href="#">' . $_SESSION['username'] . '</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="logout.php">Logout</a>
+                            </li>';
+                    }
+                    ?>
                 </ul>
             </div>
         </div>

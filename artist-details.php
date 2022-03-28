@@ -1,4 +1,5 @@
 <?php
+require 'includes/auth.php';
 $title = 'Artist Details';
 require 'includes/header.php';
 

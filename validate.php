@@ -29,6 +29,7 @@ else {
            // login is valid: access session object, store identity in session var, redirect to main artists page
            session_start();
            $_SESSION['username'] = $username;
+           $_SESSION['userId'] = $user['userId'];
            header('location:artists.php');
     }
 }
