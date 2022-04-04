@@ -88,6 +88,7 @@ catch (Exception $error) {
             echo '<div><img src="img/' . $photo . '" alt="Artist Photo" /></div>';
         }
         ?>
+        <input type="hidden" name="currentPhoto" id="currentPhoto" value="<?php echo $photo; ?>" />
         <input type="hidden" name="artistId" id="artistId" value="<?php echo $artistId; ?>" />
         <button class="btn btn-primary offset-2 mt-2">Save</button>
     </form>

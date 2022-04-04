@@ -12,6 +12,21 @@ try {
 
             // set up and and run SQL DELETE
             $userId = $_SESSION['userId'];
+
+            // check for and delete artist photo if any
+            $sql = "SELECT photo FROM artists WHERE artistId = :artistId AND userId = :userId";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':artistId', $_GET['artistId'], PDO::PARAM_INT);
+            $cmd->bindParam(':userId', $userId, PDO::PARAM_INT);
+            $cmd->execute();
+            $artist = $cmd->fetch();
+            if (!empty($artist)) {
+                if (!empty($artist['photo'])) {
+                    unlink('img/' . $artist['photo']);
+                }
+            }
+
+            // delete artist record
             $sql = "DELETE FROM artists WHERE artistId = :artistId AND userId = :userId";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(':artistId', $_GET['artistId'], PDO::PARAM_INT);

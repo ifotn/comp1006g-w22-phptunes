@@ -54,7 +54,7 @@ try {
     }
     else {
         // add logic to keep existing photo if any so it doesn't get accidentally removed
-        $photo = null;
+        $photo = $_POST['currentPhoto'];
     }
 
     // evaluate the flag => is form complete?
