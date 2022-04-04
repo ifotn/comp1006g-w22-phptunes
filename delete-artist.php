@@ -22,7 +22,7 @@ try {
             $artist = $cmd->fetch();
             if (!empty($artist)) {
                 if (!empty($artist['photo'])) {
-                    unlink('img/' . $artist['photo']);
+                    unlink(realpath('img/' . $artist['photo']));
                 }
             }
 
