@@ -10,6 +10,9 @@ require 'includes/header.php';
             <p>
                 This app uses the LAMP stack and is hosted on Amazon Web Services.  CSS Framework from Bootstrap.
             </p>
+            <p>
+                Images sourced from <a href="https://wikipedia.org" target="_new">Wikipedia</a>.
+            </p>
         </main>  
     </body>
 </html>

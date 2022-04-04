@@ -9,6 +9,7 @@ try {
     $genreId = $_POST['genreId'];
     $artistId = $_POST['artistId'];
     $ok = true; // flag for form completion; used to determine whether to save or not
+    $photo = $_FILES['photo'];  // photo upload optional
 
     // input validation
     if (empty($name)) {
@@ -31,6 +32,31 @@ try {
         }
     }
 
+    // photo upload validation
+    if (!empty($photo['name'])) {
+        $file = $_FILES['photo'];
+        $photo = $file['name'];
+        $tmpName = $file['tmp_name'];
+
+        // validate image only
+        if ((mime_content_type($tmpName) != 'image/png') && (mime_content_type($tmpName) != 'image/jpeg')) {
+            echo "Photo must be a valid PNG or JPG file";
+            $ok = false;
+        }
+        else {
+            // use session object to create new unique name to prevent overwrites
+            // e.g. mypic.png => 298347asdflk-mypic.png
+            $photo = session_id() . '-'. $photo;
+
+            // save to img directory
+            move_uploaded_file($tmpName, 'img/' . $photo);
+        }         
+    }
+    else {
+        // add logic to keep existing photo if any so it doesn't get accidentally removed
+        $photo = null;
+    }
+
     // evaluate the flag => is form complete?
     if ($ok) {
         // connect to the db using the PDO library w/5 vals: db type / server / dbname / username / password
@@ -42,9 +68,10 @@ try {
 
         if (empty($artistId)) {
             // set the SQL INSERT command to add a new record to our artists table & set up a parameter for the name
-            $sql = "INSERT INTO artists (name, genreId, userId) VALUES (:name, :genreId, :userId)";
+            $sql = "INSERT INTO artists (name, genreId, userId, photo) VALUES (:name, :genreId, :userId, :photo)";
         } else {
-            $sql = "UPDATE artists SET name = :name, genreId = :genreId, userId = :userId WHERE artistId = :artistId";
+            $sql = "UPDATE artists SET name = :name, genreId = :genreId, userId = :userId,
+                photo = :photo WHERE artistId = :artistId";
         }
 
         // populate our SQL command with our form inputs
@@ -54,6 +81,7 @@ try {
         $cmd->bindParam(':name', $name, PDO::PARAM_STR, 100);
         $cmd->bindParam(':genreId', $genreId, PDO::PARAM_INT);
         $cmd->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $cmd->bindParam(':photo', $photo, PDO::PARAM_STR, 100);
 
         // bind artistId param ONLY when we have 1 
         if (!empty($artistId)) {

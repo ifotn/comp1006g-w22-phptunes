@@ -21,3 +21,7 @@ body {
 a {
     color: #757575;
 }
+
+.thumb {
+    width: 100px;
+}

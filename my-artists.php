@@ -10,6 +10,7 @@ require 'includes/header.php';
         <tr>
             <th>Name</th>
             <th>Genre</th>
+            <th></th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -35,7 +36,14 @@ require 'includes/header.php';
                         <td>
                             <a href="artist-details.php?artistId=' . $artist['artistId'] . '">' . $artist['name'] . '</a>
                         </td>
-                        <td>' . $artist['genreName'] . '</td>
+                        <td>' . $artist['genreName'] . '</td>                     
+                        <td>';
+                
+                if (!empty($artist['photo'])) {
+                    echo '<img src="img/'. $artist['photo'] . '" alt="Artist Photo" class="thumb" />';
+                }
+                
+                echo '</td>
                         <td>
                             <a href="delete-artist.php?artistId=' . $artist['artistId'] . '" class="btn btn-danger"
                                 onclick="return confirmDelete()">

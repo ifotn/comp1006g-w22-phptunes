@@ -8,6 +8,7 @@ try {
     $artistId = null;
     $name = null;
     $genreId = null;
+    $photo = null;
 
     if (isset($_GET['artistId'])) {
         if (is_numeric($_GET['artistId'])) {
@@ -31,6 +32,7 @@ try {
             else {
                 $name = $artist['name'];
                 $genreId = $artist['genreId'];
+                $photo = $artist['photo'];
                 $db = null;                
             }
         }
@@ -42,14 +44,14 @@ catch (Exception $error) {
 ?>
 <main class="container">
     <h1>Artist Details</h1>
-    <p class="alert alert-secondary">All fields are required.</p>
-    <form method="POST" action="save-artist.php">
+    <p class="alert alert-secondary">* indicates required fields.</p>
+    <form method="POST" action="save-artist.php" enctype="multipart/form-data">
         <fieldset class="form-group m-1">
-            <label for="name" class="control-label col-2">Name:</label>
+            <label for="name" class="control-label col-2">Name: *</label>
             <input name="name" id="name" required maxlength="100" value="<?php echo $name; ?>" />
         </fieldset>
         <fieldset class="form-group m-1">
-            <label for="genreId" class="control-label col-2">Genre:</label>
+            <label for="genreId" class="control-label col-2">Genre: *</label>
             <select name="genreId" id="genreId">
                 <?php
                 try {
@@ -77,6 +79,15 @@ catch (Exception $error) {
                 ?>
             </select>
         </fieldset>
+        <fieldset class="form-group m-1">
+            <label for="photo" class="control-label col-2">Photo:</label>
+            <input type="file" name="photo" id="photo" accept=".png,.jpg,.jpeg" />
+        </fieldset>
+        <?php
+        if (!empty($photo)) {
+            echo '<div><img src="img/' . $photo . '" alt="Artist Photo" /></div>';
+        }
+        ?>
         <input type="hidden" name="artistId" id="artistId" value="<?php echo $artistId; ?>" />
         <button class="btn btn-primary offset-2 mt-2">Save</button>
     </form>

@@ -5,3 +5,6 @@
         http://lamp.computerstudi.es/~Rich100/phptunes
     </a>
 </p>
+<p>
+    Images sourced from <a href="https://wikipedia.org" target="_new">Wikipedia</a>.
+</p>
